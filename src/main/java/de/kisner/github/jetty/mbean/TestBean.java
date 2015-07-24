@@ -1,6 +1,7 @@
 package de.kisner.github.jetty.mbean;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -24,6 +25,7 @@ public class TestBean implements Serializable
 	public void init()
 	{
 		logger.info("Init!");
-		
+		Date now = new Date();
+		value = now.toString();
 	}
 }
