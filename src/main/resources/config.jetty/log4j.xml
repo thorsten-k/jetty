@@ -9,7 +9,7 @@
 	    </layout>
 	</appender>
     
-    <logger name="de.kisner.jberry" additivity="false">
+    <logger name="de.kisner.github.hetty" additivity="false">
 		<level value="DEBUG"/>
 		<appender-ref ref="A1"/>
 	</logger>
