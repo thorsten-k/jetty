@@ -9,7 +9,7 @@ import net.sf.exlp.util.io.LoggerInit;
 public class Bootstrap
 {
 	final static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
-	public final static String xmlConfig = "config.lis-client/lis.xml";
+	public final static String xmlConfig = "config.jetty/jetty.xml";
 	
 	public static Configuration init()
 	{
@@ -19,7 +19,7 @@ public class Bootstrap
 	public static Configuration init(String configFile)
 	{
 		LoggerInit loggerInit = new LoggerInit("log4j.xml");
-			loggerInit.addAltPath("config.lis-client");
+			loggerInit.addAltPath("config.jetty");
 			loggerInit.init();
 			
 		return null;
