@@ -5,9 +5,9 @@ import org.eclipse.jetty.webapp.WebAppContext;
 
 import de.kisner.github.Bootstrap;
 
-public class NettyServer 
+public class JettyServer 
 {
-	public NettyServer() throws Exception
+	public JettyServer() throws Exception
 	{
 		 Server server = new Server(8080);
 
@@ -29,6 +29,6 @@ public class NettyServer
 	public static void main(String args[]) throws Exception
 	{		
 		Bootstrap.init();
-		new NettyServer();
+		new JettyServer();
 	}
 }
