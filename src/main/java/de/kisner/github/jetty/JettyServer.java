@@ -18,7 +18,7 @@ public class JettyServer
 		ResourceHandler fileHandler = new ResourceHandler();
 		fileHandler.setResourceBase("./src");
  
-		ContextHandler ctx = new ContextHandler("/files"); /* the server uri path */
+		ContextHandler ctx = new ContextHandler("/files");
 		ctx.setHandler(fileHandler);
  
 		WebAppContext context = new WebAppContext();
@@ -28,7 +28,7 @@ public class JettyServer
 		context.setParentLoaderPriority(true);            
  
 		HandlerList handlers = new HandlerList();
-		handlers.setHandlers(new Handler[] { context, ctx});
+		handlers.setHandlers(new Handler[] {context, ctx});
 		server.setHandler(handlers);
 
 		server.start();

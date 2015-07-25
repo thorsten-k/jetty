@@ -6,24 +6,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("/rest")
-@Produces("text/plain")
-public class SimpleRestService {
+public class SimpleRestService
+{
+	@GET @Produces("text/plain")
+	public String hello()
+	{
+		return "Hello World";
+	}
 
-   @GET
-   public String hello() {
-       return "hello";
-   }
+	@GET @Path("/books") @Produces("text/plain")
+	public String getBooks()
+	{
+		return "books";
+	}
 
-
-   @GET
-   @Path("/books")
-   public String getBooks() {
-       return "books";
-   }
-
-   @GET
-   @Path("/book/{isbn}")
-   public String getBook(@PathParam("isbn") String id) {
-       return "11123";
+	@GET @Path("/book/{isbn}") @Produces("text/plain")
+	public String getBook(@PathParam("isbn") String id)
+	{
+		return id;
    }
 }
