@@ -15,12 +15,12 @@
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	
     	<!-- JDK7 -->
-    	<version.jetty>9.2.12.v20150709</version.jetty>
+ <!--   <version.jetty>9.2.12.v20150709</version.jetty>
     	<version.jdk>1.7</version.jdk>
-    	
+-->  	
     	<!-- JDK6 --> 
-<!--    <version.jetty>8.1.17.v20150415</version.jetty.jdk6>
-    	<version>1.6</version>-->
+    	<version.jetty>8.1.17.v20150415</version.jetty>
+		<version.jdk>1.6</version.jdk>
 	</properties>
 
 	<prerequisites>
@@ -29,6 +29,13 @@
 
 	<dependencies>
 	
+		<!-- Utils -->
+		<dependency>
+			<groupId>net.sf.exlp</groupId>
+			<artifactId>exlp-util</artifactId>
+		</dependency>
+	
+		<!-- Jetty -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
@@ -55,13 +62,6 @@
 			<version>${version.jetty}</version>
 		</dependency>
 
-		<!-- Servlets -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-		
 		<!-- JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -77,6 +77,11 @@
 			<groupId>javax.el</groupId>
 			<artifactId>el-api</artifactId>
 			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 		
 		<!-- Resteasy -->
@@ -105,12 +110,7 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>3.0.1.Final</version>
 		</dependency>
-	
-		<dependency>
-			<groupId>net.sf.exlp</groupId>
-			<artifactId>exlp-util</artifactId>
-		</dependency>
-		
+				
 		<!-- Logging -->
 		<dependency>
 			<groupId>log4j</groupId>

@@ -1,24 +1,24 @@
 <web-app xmlns:javaee="http://java.sun.com/xml/ns/javaee"
-		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
    
    	<context-param>
 		<param-name>facelets.DEVELOPMENT</param-name>
 		<param-value>true</param-value>
 	</context-param>
    
-   <context-param>
-      <param-name>resteasy.scan</param-name>
-      <param-value>true</param-value>     
-   </context-param>
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>     
+	</context-param>
 
-   <context-param>
-    <param-name>resteasy.resources</param-name>
-    <param-value>de.kisner.github.jetty.rest.SimpleRestService</param-value>
-   </context-param>
-    <context-param>
-      <param-name>javax.ws.rs.core.Application</param-name>
-      <param-value>de.kisner.github.jetty.rest.RestApplicationConfig</param-value>
-   </context-param>
+	<context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>de.kisner.github.jetty.rest.SimpleRestService</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.ws.rs.core.Application</param-name>
+		<param-value>de.kisner.github.jetty.rest.RestApplicationConfig</param-value>
+	</context-param>
 
    <!-- set this if you map the Resteasy servlet to something other than /*
    <context-param>
@@ -26,30 +26,28 @@
       <param-value>/resteasy</param-value>
    </context-param>
    -->
+   
    <!-- if you are using Spring, Seam or EJB as your component model, remove the ResourceMethodSecurityInterceptor -->
-   <context-param>
-      <param-name>resteasy.resource.method-interceptors</param-name>
-      <param-value>
-         org.jboss.resteasy.core.ResourceMethodSecurityInterceptor
-      </param-value>
-   </context-param>
+	<context-param>
+		<param-name>resteasy.resource.method-interceptors</param-name>
+		<param-value> org.jboss.resteasy.core.ResourceMethodSecurityInterceptor</param-value>
+	</context-param>
 
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
 
-   <listener>
-      <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
-   </listener>
-
-  <servlet>     
-    <servlet-name>Resteasy</servlet-name>
-    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Resteasy</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
-  </servlet-mapping>
+	<servlet>     
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
   
-  <servlet>
+	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -59,6 +57,7 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 	
-		<listener>
-<listener-class>com.sun.faces.config.ConfigureListener</listener-class> </listener>
+	<listener>
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
 </web-app>
