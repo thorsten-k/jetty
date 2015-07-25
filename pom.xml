@@ -13,7 +13,14 @@
     <properties>
     	<my.build.directory>target</my.build.directory>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	
+    	<!-- JDK7 -->
     	<version.jetty>9.2.12.v20150709</version.jetty>
+    	<version.jdk>1.7</version.jdk>
+    	
+    	<!-- JDK6 --> 
+<!--    <version.jetty>8.1.17.v20150415</version.jetty.jdk6>
+    	<version>1.6</version>-->
 	</properties>
 
 	<prerequisites>
@@ -158,8 +165,8 @@
 				<inherited>true</inherited>
 				<version>3.3</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${version.jdk}</source>
+					<target>${version.jdk}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
