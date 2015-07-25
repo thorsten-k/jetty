@@ -15,12 +15,13 @@
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	
     	<!-- JDK7 -->
- <!--   <version.jetty>9.2.12.v20150709</version.jetty>
+   <version.jetty>9.2.12.v20150709</version.jetty>
     	<version.jdk>1.7</version.jdk>
--->  	
+  	
     	<!-- JDK6 --> 
-    	<version.jetty>8.1.17.v20150415</version.jetty>
+  <!--   	<version.jetty>8.1.17.v20150415</version.jetty>
 		<version.jdk>1.6</version.jdk>
+-->		
 	</properties>
 
 	<prerequisites>
@@ -105,12 +106,12 @@
             	</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
+<!--	<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-netty</artifactId>
 			<version>3.0.1.Final</version>
 		</dependency>
-		<dependency>
+ -->		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>3.0.1.Final</version>

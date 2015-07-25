@@ -1,13 +1,8 @@
 package de.kisner.github.jetty;
 
-import org.jboss.resteasy.plugins.server.netty.NettyJaxrsServer;
-import org.jboss.resteasy.spi.ResteasyDeployment;
-
-import de.kisner.github.Bootstrap;
-import de.kisner.github.jetty.rest.SimpleRestService;
-
 public class NettyServer 
 {
+	/*
 	public NettyServer() throws Exception
 	{
 		ResteasyDeployment deployment = new ResteasyDeployment();
@@ -26,4 +21,5 @@ public class NettyServer
 		Bootstrap.init();
 		new NettyServer();
 	}
+	*/
 }
