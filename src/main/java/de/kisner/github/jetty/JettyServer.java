@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.kisner.github.Bootstrap;
+import de.kisner.github.jetty.security.SecurityHandlerFactory;
 import de.kisner.github.jetty.servlet.HelloServlet;
 
 public class JettyServer 
@@ -34,12 +35,17 @@ public class JettyServer
 		context.setContextPath("/app");
 		context.setParentLoaderPriority(true);
 		
-		ServletContextHandler ctxServlet = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		ctxServlet.setContextPath("/servlet");
-		ctxServlet.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
- 
+		ServletContextHandler ctxServletPublic = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		ctxServletPublic.setContextPath("/servlet/public");
+		ctxServletPublic.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
+		
+		ServletContextHandler ctxServletSecured = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		ctxServletSecured.setContextPath("/servlet/secured");
+		ctxServletSecured.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
+		ctxServletSecured.setSecurityHandler(SecurityHandlerFactory.basicAuth("scott", "tiger2", "Private!"));
+		
 		HandlerList handlers = new HandlerList();
-		handlers.setHandlers(new Handler[] {context, ctx, ctxServlet});
+		handlers.setHandlers(new Handler[] {context, ctx, ctxServletPublic, ctxServletSecured});
 		server.setHandler(handlers);
 
 		server.start();
@@ -54,7 +60,8 @@ public class JettyServer
 		logger.info("\thttp://localhost:8080/app/index.jsf");
 		logger.info("\thttp://localhost:8080/app/rest");
 		logger.info("\thttp://localhost:8080/files/test.txt");
-		logger.info("\thttp://localhost:8080/servlet/hello/x");
+		logger.info("\thttp://localhost:8080/servlet/public/hello/x");
+		logger.info("\thttp://localhost:8080/servlet/secured/hello/x");
 		
 		new JettyServer();
 	}
