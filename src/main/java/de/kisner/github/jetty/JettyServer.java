@@ -39,13 +39,18 @@ public class JettyServer
 		ctxServletPublic.setContextPath("/servlet/public");
 		ctxServletPublic.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
 		
-		ServletContextHandler ctxServletSecured = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		ctxServletSecured.setContextPath("/servlet/secured");
-		ctxServletSecured.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
-		ctxServletSecured.setSecurityHandler(SecurityHandlerFactory.basicAuth("scott", "tiger2", "Private!"));
+		ServletContextHandler ctxServletSecuredHash = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		ctxServletSecuredHash.setContextPath("/servlet/secured/hash");
+		ctxServletSecuredHash.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
+		ctxServletSecuredHash.setSecurityHandler(SecurityHandlerFactory.hashLoginService());
+		
+		ServletContextHandler ctxServletSecuredCustom = new ServletContextHandler(ServletContextHandler.SESSIONS);
+		ctxServletSecuredCustom.setContextPath("/servlet/secured/custom");
+		ctxServletSecuredCustom.addServlet(new ServletHolder(new HelloServlet()),"/hello/*");
+		ctxServletSecuredCustom.setSecurityHandler(SecurityHandlerFactory.customLoginService());
 		
 		HandlerList handlers = new HandlerList();
-		handlers.setHandlers(new Handler[] {context, ctx, ctxServletPublic, ctxServletSecured});
+		handlers.setHandlers(new Handler[] {context, ctx, ctxServletPublic, ctxServletSecuredHash, ctxServletSecuredCustom});
 		server.setHandler(handlers);
 
 		server.start();
@@ -61,7 +66,8 @@ public class JettyServer
 		logger.info("\thttp://localhost:8080/app/rest");
 		logger.info("\thttp://localhost:8080/files/test.txt");
 		logger.info("\thttp://localhost:8080/servlet/public/hello/x");
-		logger.info("\thttp://localhost:8080/servlet/secured/hello/x");
+		logger.info("\thttp://localhost:8080/servlet/secured/hash/hello/x");
+		logger.info("\thttp://localhost:8080/servlet/secured/custom/hello/x");
 		
 		new JettyServer();
 	}

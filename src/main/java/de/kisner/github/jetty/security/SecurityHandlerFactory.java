@@ -10,8 +10,32 @@ import org.eclipse.jetty.util.security.Credential;
 
 public class SecurityHandlerFactory
 {
-	public static final SecurityHandler basicAuth(String username, String password, String realm)
+	public static final SecurityHandler customLoginService()
+	{        
+        Constraint constraint = new Constraint();
+        constraint.setName(Constraint.__BASIC_AUTH);
+        constraint.setRoles(new String[]{"user"});
+        constraint.setAuthenticate(true);
+         
+        ConstraintMapping cm = new ConstraintMapping();
+        cm.setConstraint(constraint);
+        cm.setPathSpec("/*");
+        
+        ConstraintSecurityHandler csh = new ConstraintSecurityHandler();
+        csh.setAuthenticator(new BasicAuthenticator());
+        csh.setRealmName("myrealm");
+        csh.addConstraintMapping(cm);
+        csh.setLoginService(new CustomLoginService());
+        
+        return csh;
+    }
+	
+	public static final SecurityHandler hashLoginService()
 	{
+		String username = "scott";
+		String password = "tiger";
+		String realm = "HashLoginService";
+				
     	HashLoginService l = new HashLoginService();
         l.putUser(username, Credential.getCredential(password), new String[] {"user"});
         l.setName(realm);
@@ -32,6 +56,5 @@ public class SecurityHandlerFactory
         csh.setLoginService(l);
         
         return csh;
-    	
     }
 }
