@@ -17,10 +17,6 @@
     	<!-- JDK7 -->
 		<version.jetty>9.2.12.v20150709</version.jetty>
     	<version.jdk>1.7</version.jdk>
-  	
-    	<!-- JDK6
-		<version.jetty>8.1.17.v20150415</version.jetty>
-		<version.jdk>1.6</version.jdk> -->
 				
 	</properties>
 
@@ -243,7 +239,7 @@
 			<dependency>
 				<groupId>net.sf.exlp</groupId>
     			<artifactId>exlp-bom</artifactId>
-    			<version>0.1.11-SNAPSHOT</version>
+    			<version>0.1.12-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
