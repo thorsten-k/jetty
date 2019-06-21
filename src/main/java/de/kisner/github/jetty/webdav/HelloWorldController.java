@@ -25,9 +25,7 @@ public class HelloWorldController
 	}
 	 
 	@Root
-    public HelloWorldController getRoot() {
-        return this;
-    }
+    public HelloWorldController getRoot() {return this;}
 	
 	@ChildrenOf
     public List<Product> getProducts(HelloWorldController root)
